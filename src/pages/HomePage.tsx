@@ -16,12 +16,12 @@ export const HomePage: React.FC = (): JSX.Element => {
     if (news.length === 0) {
       getNews();
     }
-    // const interval = setInterval(() => {
-    //   getNews();
-    // }, 60000);
-    // return () => {
-    //   clearInterval(interval);
-    // };
+    const interval = setInterval(() => {
+      getNews();
+    }, 60000);
+    return () => {
+      clearInterval(interval);
+    };
   }, []);
 
   return <News getNews={getNews} />;
