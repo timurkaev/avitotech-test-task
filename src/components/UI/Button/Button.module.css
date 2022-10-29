@@ -1,0 +1,47 @@
+.button {
+	margin-top: 20px;
+
+	cursor: pointer;
+	transition: all .2s;
+
+	border: none;
+	border-radius: 8px;
+	box-shadow: 0 3px 3px rgb(0 0 0 / 20%);
+}
+
+.button:hover {
+	box-shadow: 0 5px 5px rgb(0 0 0 / 30%);
+}
+
+.button:active {
+	box-shadow: 0 3px 3px rgb(0 0 0 / 20%);
+}
+
+.button:disabled {
+	opacity: .5;
+}
+
+.primary {
+	color: var(--color-white);
+	background-color: var(--color-primary);
+}
+
+.ghost {
+	color: #000;
+	border: 1px solid var(--color-primary);
+	background-color: var(--color-white);
+}
+
+.medium {
+	height: 40px;
+	padding: 10px;
+
+	font-size: 18px;
+}
+
+.small {
+	height: 30px;
+	padding: 5px;
+
+	font-size: 16px;
+}

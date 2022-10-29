@@ -1,0 +1,34 @@
+:root {
+	--color-primary: #973939;
+	--color-white: #FFF;
+	--body-bg: #E5E5E5;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+
+	background-color: var(--body-bg);
+
+	font-family: Roboto, sans-serif;
+}
+
+a {
+	text-decoration: none;
+
+	color: inherit;
+}
+
+.pageNotFound {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	height: calc(100vh - 77px);
+
+	font-size: 20px;
+}

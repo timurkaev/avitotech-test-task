@@ -1,0 +1,93 @@
+:root {
+	--hue: 223;
+}
+
+.preloader {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	height: calc(100vh - 277px);
+}
+
+.ap {
+	width: 150px;
+	height: 200px;
+}
+
+.apRing {
+	stroke: hsl(var(--hue) 10% 10% / 15%);
+
+	transition: stroke 0.3s;
+}
+
+.apWorm1,
+.apWorm2 {
+	animation-duration: 3s;
+	animation-iteration-count: infinite;
+}
+
+.apWorm1 {
+	animation-name: worm1;
+}
+
+.apWorm2 {
+	visibility: hidden;
+
+	animation-name: worm2;
+}
+
+
+/* Animtions */
+@keyframes worm1 {
+	0% {
+		animation-timing-function: ease-in-out;
+		stroke-dashoffset: -87.96;
+	}
+
+	20% {
+		animation-timing-function: ease-in;
+		stroke-dashoffset: 0;
+	}
+
+	60% {
+		stroke-dashoffset: -791.68;
+
+		visibility: visible;
+	}
+
+	60.1%,
+	100% {
+		stroke-dashoffset: -791.68;
+
+		visibility: hidden;
+	}
+}
+@keyframes worm2 {
+	0%,
+	60% {
+		stroke-dashoffset: -87.96;
+
+		visibility: hidden;
+	}
+
+	60.1% {
+		visibility: visible;
+
+		animation-timing-function: cubic-bezier(0,0,0.5,0.75);
+		stroke-dashoffset: -87.96;
+	}
+
+	77% {
+		visibility: visible;
+
+		animation-timing-function: cubic-bezier(0.5,0.25,0.5,0.88);
+		stroke-dashoffset: -340;
+	}
+
+	100% {
+		stroke-dashoffset: -669.92;
+
+		visibility: visible;
+	}
+}

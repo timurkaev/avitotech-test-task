@@ -1,0 +1,17 @@
+.navbar {
+	display: flex;
+	align-items: center;
+
+	width: 1120px;
+	height: 100%;
+	margin: auto;
+}
+
+.title {
+	cursor: pointer;
+
+	color: var(--color-white);
+
+	font-size: 40px;
+	font-weight: 800;
+}
