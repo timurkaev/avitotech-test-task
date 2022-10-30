@@ -2,7 +2,8 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useAppSelector } from "../../hooks/useAppSelector";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
-import { fetchComments, fetchNewsById } from "../../redux/slices/newsSlice";
+import { fetchComments } from "../../redux/slices/commentsSlice";
+import {fetchNewsById} from "../../redux/slices/newsSlice";
 import { NewsItem } from "../News/NewsItem";
 import { Comments } from "../Comments/Comments";
 import { Preloader } from "../UI/Preloader/Preloader";
@@ -10,12 +11,12 @@ import { Preloader } from "../UI/Preloader/Preloader";
 export const SingleNews: React.FC = (): JSX.Element => {
   const { id } = useParams<{ id: string }>();
 
-  const { newsById, isLoading } = useAppSelector((state) => state.news);
+  const { newsById, isLoading, params } = useAppSelector((state) => state.news);
   const { comments } = useAppSelector((state) => state.comments);
   const dispatch = useAppDispatch();
 
   const getNewsById = (): void => {
-    dispatch(fetchNewsById(Number(id)));
+      dispatch(fetchNewsById(Number(id)));
   };
 
   const getComments = (): void => {
@@ -23,8 +24,11 @@ export const SingleNews: React.FC = (): JSX.Element => {
   };
 
   React.useEffect(() => {
-    getNewsById();
-    getComments();
+    const findId = params.find((comment) => comment === Number(id))
+    if(!findId) {
+      getNewsById();
+      getComments();
+    }
   }, []);
 
   if (isLoading) {

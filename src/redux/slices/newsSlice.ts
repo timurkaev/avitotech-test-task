@@ -7,6 +7,7 @@ const initialState: NewsStateInterface = {
   ids: [],
   news: [],
   newsById: {} as NewsInterface,
+  params: [],
   isLoading: false,
   error: "",
 };
@@ -27,16 +28,6 @@ export const fetchNewsById = createAsyncThunk("fetch/newsById", async (newsId: n
   return response;
 });
 
-export const fetchComments = createAsyncThunk("fetch/newsComments", async (id: number) => {
-  const response = await NewsApi.getNewsById(id);
-  const comments = await Promise.all(
-    response?.kids.map(async (kid: number) => {
-      const response = await NewsApi.getNewsById(kid);
-      return response;
-    }),
-  );
-  return comments;
-});
 
 export const newsSlice = createSlice({
   name: "news",
@@ -62,6 +53,7 @@ export const newsSlice = createSlice({
       .addCase(fetchNewsById.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.newsById = payload;
+        state.params.push(payload.id)
       })
       .addCase(fetchNewsById.rejected, (state) => {
         state.isLoading = false;
